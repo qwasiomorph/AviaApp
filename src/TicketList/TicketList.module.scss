@@ -1,0 +1,28 @@
+$bgColor: #2196f3;
+$primary: #fff;
+
+.ticketList {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .loadButton {
+    padding: 15px 20px;
+    background-color: $bgColor;
+    border: 1px solid $bgColor;
+    border-radius: 3px;
+    color: $primary;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
+  }
+  .loadButton:hover {
+    color: $bgColor;
+    background-color: $primary;
+  }
+}

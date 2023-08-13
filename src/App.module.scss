@@ -1,0 +1,15 @@
+.mainWrapper {
+  padding: 50px 0;
+  .logoWrapper {
+    padding: 3em 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ticketWrapper {
+    display: flex;
+    .listWrapper {
+      padding: 0 20px;
+    }
+  }
+}
