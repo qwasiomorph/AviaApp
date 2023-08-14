@@ -37,3 +37,9 @@ $checked: #2196f3;
     background: url("../assets/check.svg") no-repeat center center;
   }
 }
+
+@media (max-width: 768px) {
+  .transferCard {
+    width: inherit;
+  }
+}

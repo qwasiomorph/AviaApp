@@ -1,7 +1,7 @@
-import { dateParser, durationParser } from "../utils/timeParsers";
-import style from "./Ticket.module.scss";
+import { dateParser, durationParser } from '../utils/timeParsers';
+import style from './Ticket.module.scss';
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Ticket = ({ info }) => {
   const { price, carrier, segments } = info;
@@ -11,7 +11,7 @@ const Ticket = ({ info }) => {
     <div className={style.ticketCard}>
       <div className={style.header}>
         <h2 className={style.price}>
-          {price} {"Р"}
+          {price} {'Р'}
         </h2>
         <img src={carrier} alt={`${carrier} logo`} />
       </div>
@@ -29,13 +29,9 @@ const Ticket = ({ info }) => {
             <div className={style.stops}>
               <div className={style.label}>
                 {stops.length} пересад
-                {stops.length % 5 === 0
-                  ? "ок"
-                  : stops.length === 1
-                  ? "ка"
-                  : "ки"}
+                {stops.length % 5 === 0 ? 'ок' : stops.length === 1 ? 'ка' : 'ки'}
               </div>
-              <div className={style.content}>{stops.join(", ")}</div>
+              <div className={style.content}>{stops.join(', ')}</div>
             </div>
           </div>
         ))}
@@ -45,7 +41,7 @@ const Ticket = ({ info }) => {
 };
 
 Ticket.defaultProps = {
-  info: { price: 0, carrier: "", segments: [] },
+  info: { price: 0, carrier: '', segments: [] },
 };
 
 Ticket.propTypes = {

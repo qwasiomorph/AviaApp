@@ -1,10 +1,9 @@
 .ticketListFilter {
   display: flex;
-
   .TicketList__member {
     background-color: #fff;
     border: 1px solid #dfe5ec;
-    height: fit-content;
+    height: inherit;
     label {
       display: block;
       padding: 15px;

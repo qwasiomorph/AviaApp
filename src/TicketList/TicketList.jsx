@@ -1,16 +1,12 @@
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectTickets,
-  selectVisibleAmount,
-  setVisibleAmount,
-} from "../store/store";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectTickets, selectVisibleAmount, setVisibleAmount } from '../store/store';
 
-import Ticket from "../Ticket";
-import ErrorWrapper from "../ErrorWrapper";
+import Ticket from '../Ticket';
+import ErrorWrapper from '../ErrorWrapper';
 
-import style from "./TicketList.module.scss";
+import style from './TicketList.module.scss';
 
-import { amountOfTicketsAtTime, nothingFoundMsg } from "../utils/consts";
+import { amountOfTicketsAtTime, nothingFoundMsg } from '../utils/consts';
 
 const TicketList = () => {
   const dispatch = useDispatch();
@@ -33,11 +29,7 @@ const TicketList = () => {
             {(ticketList || []).map((ticket, index) => (
               <Ticket key={index} info={ticket} />
             ))}
-            <button
-              onClick={handleShowMore}
-              className={style.loadButton}
-              type="button"
-            >
+            <button onClick={handleShowMore} className={style.loadButton} type="button">
               Показать еще 5 билетов!
             </button>
           </div>
@@ -47,12 +39,7 @@ const TicketList = () => {
       </>
     );
   } catch (e) {
-    return (
-      <ErrorWrapper
-        errorMessage={ticketList ? ticketList.message : "Загрузка"}
-        loading={!ticketList}
-      />
-    );
+    return <ErrorWrapper errorMessage={ticketList ? ticketList.message : 'Загрузка'} loading={!ticketList} />;
   }
 };
 

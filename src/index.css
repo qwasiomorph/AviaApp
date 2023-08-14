@@ -24,3 +24,9 @@ body {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+}

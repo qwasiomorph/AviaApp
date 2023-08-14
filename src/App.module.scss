@@ -13,3 +13,18 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .mainWrapper {
+    padding: 1em;
+    .logoWrapper {
+      padding: 1em 0;
+    }
+    .ticketWrapper {
+      flex-direction: column;
+      .listWrapper {
+        padding: 1em 0;
+      }
+    }
+  }
+}
