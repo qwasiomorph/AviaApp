@@ -1,7 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
-import { selectFilter, setFilter } from "../store/store";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectFilter, setFilter } from '../../store/store';
 
-import style from "./TicketListFilter.module.scss";
+import style from './TicketListFilter.module.scss';
 
 const TickerListFilter = () => {
   const { cheap, swift, optimal } = useSelector(selectFilter);
@@ -14,11 +14,7 @@ const TickerListFilter = () => {
 
   return (
     <div className={style.ticketListFilter}>
-      <div
-        className={[style.TicketList__member, cheap && style.activeFilter].join(
-          " "
-        )}
-      >
+      <div className={[style.TicketList__member, cheap && style.activeFilter].join(' ')}>
         <label>
           <input
             className="hidden"
@@ -31,11 +27,7 @@ const TickerListFilter = () => {
           Самый дешевый
         </label>
       </div>
-      <div
-        className={[style.TicketList__member, swift && style.activeFilter].join(
-          " "
-        )}
-      >
+      <div className={[style.TicketList__member, swift && style.activeFilter].join(' ')}>
         <label>
           <input
             className="hidden"
@@ -48,12 +40,7 @@ const TickerListFilter = () => {
           Самый быстрый
         </label>
       </div>
-      <div
-        className={[
-          style.TicketList__member,
-          optimal && style.activeFilter,
-        ].join(" ")}
-      >
+      <div className={[style.TicketList__member, optimal && style.activeFilter].join(' ')}>
         <label>
           <input
             className="hidden"

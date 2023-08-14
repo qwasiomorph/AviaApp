@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTickets, selectVisibleAmount, setVisibleAmount } from '../store/store';
+import { selectTickets, selectVisibleAmount, setVisibleAmount } from '../../store/store';
 
 import Ticket from '../Ticket';
 import ErrorWrapper from '../ErrorWrapper';
 
 import style from './TicketList.module.scss';
 
-import { amountOfTicketsAtTime, nothingFoundMsg } from '../utils/consts';
+import { amountOfTicketsAtTime, nothingFoundMsg } from '../../utils/consts';
 
 const TicketList = () => {
   const dispatch = useDispatch();

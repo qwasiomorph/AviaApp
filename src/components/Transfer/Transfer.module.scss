@@ -24,7 +24,7 @@ $checked: #2196f3;
     padding: 10px 20px;
   }
   .checkBoxWrap::before {
-    content: "";
+    content: '';
     margin-right: 10px;
     display: inline-block;
     width: 20px;
@@ -34,7 +34,7 @@ $checked: #2196f3;
   }
   .checkBoxActive::before {
     border: 1px solid $checked;
-    background: url("../assets/check.svg") no-repeat center center;
+    background: url('../../assets/check.svg') no-repeat center center;
   }
 }
 

@@ -1,12 +1,12 @@
-import logo from "./assets/logo.svg";
-import style from "./App.module.scss";
+import logo from './assets/logo.svg';
+import style from './App.module.scss';
 
-import Transfer from "./Transfer";
-import TicketList from "./TicketList";
-import { Provider } from "react-redux";
-import { store, initiateSearch } from "./store/store";
-import { useEffect } from "react";
-import TickerListFilter from "./TicketListFilter/TickerListFilter";
+import Transfer from './components/Transfer';
+import TicketList from './components/TicketList';
+import { Provider } from 'react-redux';
+import { store, initiateSearch } from './store/store';
+import { useEffect } from 'react';
+import TickerListFilter from './components/TicketListFilter/TickerListFilter';
 
 function App() {
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { dateParser, durationParser } from '../utils/timeParsers';
+import { dateParser, durationParser } from '../../utils/timeParsers';
 import style from './Ticket.module.scss';
 
 import PropTypes from 'prop-types';
