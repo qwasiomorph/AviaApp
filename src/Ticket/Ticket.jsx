@@ -1,6 +1,8 @@
 import { dateParser, durationParser } from "../utils/timeParsers";
 import style from "./Ticket.module.scss";
 
+import PropTypes from "prop-types";
+
 const Ticket = ({ info }) => {
   const { price, carrier, segments } = info;
   const durations = durationParser(segments);
@@ -40,6 +42,14 @@ const Ticket = ({ info }) => {
       </div>
     </div>
   );
+};
+
+Ticket.defaultProps = {
+  info: { price: 0, carrier: "", segments: [] },
+};
+
+Ticket.propTypes = {
+  info: PropTypes.object,
 };
 
 export default Ticket;

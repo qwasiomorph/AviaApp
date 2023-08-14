@@ -42,14 +42,14 @@ const TicketList = () => {
             </button>
           </div>
         ) : (
-          <ErrorWrapper message={nothingFoundMsg} info={true} />
+          <ErrorWrapper errorMessage={nothingFoundMsg} info={true} />
         )}
       </>
     );
   } catch (e) {
     return (
       <ErrorWrapper
-        message={ticketList ? ticketList.message : "Загрузка"}
+        errorMessage={ticketList ? ticketList.message : "Загрузка"}
         loading={!ticketList}
       />
     );

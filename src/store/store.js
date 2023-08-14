@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { compose } from "redux";
 import { createSlice, configureStore, createSelector } from "@reduxjs/toolkit";
 
+/* eslint no-unused-vars: "off"*/
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
