@@ -1,24 +1,24 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { compose } from "redux";
-import { createSlice, configureStore, createSelector } from "@reduxjs/toolkit";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { compose } from 'redux';
+import { createSlice, configureStore, createSelector } from '@reduxjs/toolkit';
 
 /* eslint no-unused-vars: "off"*/
 const composeEnhancers =
-  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
         // Specify extension’s options like name, actionsDenylist, actionsCreators, serialize...
       })
     : compose;
 
 export const aviaApi = createApi({
-  reducerPath: "aviaApi",
+  reducerPath: 'aviaApi',
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_API_URL,
   }),
 
   endpoints: (builder) => ({
     getSearchId: builder.query({
-      query: () => "/search",
+      query: () => '/search',
     }),
     getTickets: builder.query({
       query: (searchId) => `/tickets?searchId=${searchId}`,
@@ -30,9 +30,9 @@ export const useSearchQuery = aviaApi.endpoints.getSearchId.useQuery;
 export const useTicketQuery = aviaApi.endpoints.getTickets.useQuery;
 
 const ticketSlice = createSlice({
-  name: "tickets",
+  name: 'tickets',
   initialState: {
-    searchId: "",
+    searchId: '',
     appIsInitiated: false,
     visibleAmount: 5,
   },
@@ -48,7 +48,7 @@ const ticketSlice = createSlice({
 });
 
 const filterSlice = createSlice({
-  name: "filter",
+  name: 'filter',
   initialState: {
     filter: {
       cheap: true,
@@ -60,21 +60,21 @@ const filterSlice = createSlice({
     setFilter: (state, action) => {
       let newFilter = {};
       switch (action.payload) {
-        case "FILTER_CHEAP":
+        case 'FILTER_CHEAP':
           newFilter = {
             cheap: true,
             swift: false,
             optimal: false,
           };
           break;
-        case "FILTER_SWIFT":
+        case 'FILTER_SWIFT':
           newFilter = {
             cheap: false,
             swift: true,
             optimal: false,
           };
           break;
-        case "FILTER_OPTIMAL":
+        case 'FILTER_OPTIMAL':
           newFilter = {
             cheap: false,
             swift: false,
@@ -88,7 +88,7 @@ const filterSlice = createSlice({
 });
 
 const transferSlice = createSlice({
-  name: "transfer",
+  name: 'transfer',
   initialState: {
     transfer: {
       noTransfers: false,
@@ -101,25 +101,25 @@ const transferSlice = createSlice({
     setTransfer: (state, action) => {
       let newTransfer = {};
       switch (action.payload.key) {
-        case "0":
+        case '0':
           newTransfer = {
             ...state.transfer,
             noTransfers: action.payload.value,
           };
           break;
-        case "1":
+        case '1':
           newTransfer = {
             ...state.transfer,
             oneTransfer: action.payload.value,
           };
           break;
-        case "2":
+        case '2':
           newTransfer = {
             ...state.transfer,
             twoTransfers: action.payload.value,
           };
           break;
-        case "3":
+        case '3':
           newTransfer = {
             ...state.transfer,
             threeTransfers: action.payload.value,
@@ -150,19 +150,14 @@ export const store = configureStore({
     transfer: transferSlice.reducer,
     aviaApi: aviaApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(aviaApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(aviaApi.middleware),
 });
 
 export const initiateSearch = async () => {
-  const { data } = await store.dispatch(
-    aviaApi.endpoints.getSearchId.initiate()
-  );
+  const { data } = await store.dispatch(aviaApi.endpoints.getSearchId.initiate());
   store.dispatch(setSearchId(data.searchId));
 
-  store.dispatch(
-    aviaApi.endpoints.getTickets.initiate(store.getState().tickets.searchId)
-  );
+  store.dispatch(aviaApi.endpoints.getTickets.initiate(store.getState().tickets.searchId));
 };
 
 export const selectVisibleAmount = (state) => state.tickets.visibleAmount;
@@ -171,14 +166,8 @@ export const selectFilter = (state) => state.filter.filter;
 export const selectTransfer = (state) => state.transfer.transfer;
 
 export const selectTickets = createSelector(
-  (state) =>
-    aviaApi.endpoints.getTickets.select(store.getState().tickets.searchId)(
-      state
-    )?.data,
-  (state) =>
-    aviaApi.endpoints.getTickets.select(store.getState().tickets.searchId)(
-      state
-    )?.error,
+  (state) => aviaApi.endpoints.getTickets.select(store.getState().tickets.searchId)(state)?.data,
+  (state) => aviaApi.endpoints.getTickets.select(store.getState().tickets.searchId)(state)?.error,
   (state) => state.tickets.visibleAmount,
   (state) => state.filter.filter,
   (state) => state.transfer.transfer,
@@ -211,14 +200,13 @@ export const selectTickets = createSelector(
           return a.price - b.price;
         }
         if (filter.swift) {
-          return (
-            a.segments[0].duration +
-            a.segments[1].duration -
-            (b.segments[0].duration + b.segments[1].duration)
-          );
+          return a.segments[0].duration + a.segments[1].duration - (b.segments[0].duration + b.segments[1].duration);
         }
         if (filter.optimal) {
-          return a.price - b.price;
+          return (
+            a.price / ((a.segments[0].duration + a.segments[1].duration) / 60) -
+            b.price / ((b.segments[0].duration + b.segments[1].duration) / 60)
+          );
         }
       })
       .slice(0, visibleAmount);
