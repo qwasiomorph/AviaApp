@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectFilter, setFilter } from '../../store/store';
+import { setFilter } from '../../store/store';
+import { selectFilter } from '../../store/selectors';
 
 import style from './TicketListFilter.module.scss';
 

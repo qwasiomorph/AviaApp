@@ -4,14 +4,10 @@ import style from './App.module.scss';
 import Transfer from './components/Transfer';
 import TicketList from './components/TicketList';
 import { Provider } from 'react-redux';
-import { store, initiateSearch } from './store/store';
-import { useEffect } from 'react';
+import { store } from './store/store';
 import TickerListFilter from './components/TicketListFilter/TickerListFilter';
 
 function App() {
-  useEffect(() => {
-    initiateSearch();
-  }, []);
   return (
     <Provider store={store}>
       <div className={style.mainWrapper}>

@@ -13,7 +13,13 @@ const Ticket = ({ info }) => {
         <h2 className={style.price}>
           {price} {'Р'}
         </h2>
-        <img src={carrier} alt={`${carrier} logo`} />
+        <img
+          src={`http://pics.avs.io/99/36/${carrier}.png`}
+          alt={`${carrier} logo`}
+          width={100}
+          height={36}
+          style={{ paddingRight: '1em' }}
+        />
       </div>
       <div className={style.segmentList}>
         {segments.map(({ origin, destination, date, stops }, index) => (

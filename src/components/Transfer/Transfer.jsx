@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTransfer, setTransfer, setVisibleAmount } from '../../store/store';
+import { setTransfer, setVisibleAmount } from '../../store/store';
+import { selectTransfer } from '../../store/selectors';
 
 import style from './Transfer.module.scss';
 import { amountOfTicketsAtTime } from '../../utils/consts';

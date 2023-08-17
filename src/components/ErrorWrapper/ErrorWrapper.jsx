@@ -1,16 +1,16 @@
-import { Alert, Space } from "antd";
-import style from "./ErrorWrapper.module.scss";
-import PropTypes from "prop-types";
+import { Alert, Space } from 'antd';
+import style from './ErrorWrapper.module.scss';
+import PropTypes from 'prop-types';
 
-const ErrorWrapper = ({ errorMessage, info = false, loading }) => {
+const ErrorWrapper = ({ errorMessage, info = false }) => {
   return (
     <div className={style.errorWrap}>
-      <Space direction="vertical" style={{ width: "433px" }}>
+      <Space direction="vertical" style={{ width: '433px' }}>
         <Alert
-          message={info ? "" : loading ? "" : "Ошибка"}
+          message={info ? '' : 'Ошибка'}
           description={errorMessage}
-          type={info || loading ? "info" : "error"}
-          showIcon={!(info || loading)}
+          type={info ? 'info' : 'error'}
+          showIcon={!info}
         />
       </Space>
     </div>
@@ -18,7 +18,7 @@ const ErrorWrapper = ({ errorMessage, info = false, loading }) => {
 };
 
 ErrorWrapper.defaultProps = {
-  errorMessage: "",
+  errorMessage: '',
   info: false,
   loading: false,
 };
